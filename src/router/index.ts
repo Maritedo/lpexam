@@ -47,6 +47,8 @@ export const getDisplayNames = (names: string[]): dispNameMapper[] => {
 // * 1 叶子节点 具有 component 属性且没有children
 // * 2 子树节点 具有 children 属性且不具有 component 属性
 // * 3 指针节点 不具有 children 属性和 page 属性但具有 redirect 属性
+const tiku = [
+]
 export const portal: ExtendedRecord[] = [
   {
     path: '/',
@@ -54,80 +56,28 @@ export const portal: ExtendedRecord[] = [
     component: () => import('@/views/PageHome.vue'),
     alias: ['/index', '/index.html', '/home'],
     meta: {
-      title: "主页",
+      title: "帮助",
       icon: Home
     }
   },
   {
-    path: '/dev',
+    path: '/query',
     name: 'dev',
-    component: () => import('@/views/GroupDev.vue'),
     meta: {
-      title: '开发',
+      title: '题库',
       icon: Construct
     },
     children: [
       {
-        path: 'undone',
-        name: 'undone',
+        path: 'test',
+        name: 'test',
+        component: () => import('@/views/query/TemplateMain.vue'),
         meta: {
-          title: '测试中项目',
-          icon: Flask
-        },
-        children: [
-          {
-            path: 'newfolder',
-            name: 'newfolder',
-            component: () => import('@/views/dev/undone/ColorGame.vue'),
-            meta: {
-              title: '新建文件夹（1）',
-              icon: Fish,
-              keepAlive: true
-            }
-          }
-        ]
-      },
-      {
-        path: 'almost',
-        name: 'almost',
-        meta: {
-          title: '几近完成的项目',
-          icon: Flash
-        },
-        children: [
-          {
-            path: 'colors',
-            name: 'colors',
-            component: () => import('@/views/dev/almost/ColorPalette.vue'),
-            meta: {
-              title: '调色板',
-              icon: ColorPalette,
-              keepAlive: true
-            }
-          }
-        ]
+          title: '新建文件夹（1）',
+          icon: Fish
+        }
       }
     ]
-  },
-  {
-    path: '/tool',
-    name: 'tool',
-    component: () => import('@/views/GroupTool.vue'),
-    meta: {
-      title: '工具',
-      icon: Briefcase
-    },
-    children: [
-    ]
-  },
-  {
-    path: '/dev404',
-    name: 'dev404',
-    redirect: '404',
-    meta: {
-      title: '[DEV]404',
-      icon: Warning
-    }
   }
 ]
 export const action: ExtendedRecord[] = [

@@ -14,7 +14,7 @@
                 </n-button>
               </div>
               <n-breadcrumb class="breadcrumb">
-                <n-breadcrumb-item :clickable="false"> 测试应用 </n-breadcrumb-item>
+                <n-breadcrumb-item :clickable="false"> 乐跑 </n-breadcrumb-item>
                 <transition name="breadcrumb" v-for="(name, index) in getDisplayNames(section)" :key="index">
                   <n-breadcrumb-item nonedrag :key="name.original" @click.prevent="onBreadcurmbClick">
                     <router-link :to="{ name: name.original }">
@@ -81,7 +81,8 @@ const actionRef: Ref<null | typeof NMenu> = ref(null)
 const currentPortal: Ref<any> = ref()
 const currentAction: Ref<any> = ref()
 const section: Ref<string[]> = ref([])
-const collapsed: Ref<boolean> = ref(true)
+
+const { collapsed } = storeToRefs(useConfigs())
 
 const appConfig = storeToRefs(useConfigs())
 const appRouter = useRouter()

@@ -10,6 +10,7 @@ export const useConfigStore = defineStore('configs', {
     useSystemTheme: ref(false),
     userDarkTheme: ref(true),
     keepAlive: ref(true),
+    collapsed: ref(false)
   }),
   getters: {
     currentTheme(): BuiltInGlobalTheme | null {
