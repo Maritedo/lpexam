@@ -41,10 +41,10 @@ export default ({ mode }: { mode: string }): UserConfig => {
       VitePWA({
         manifest: {
           // 描述信息
-          short_name: "测试应用",
-          name: '测试应用',
+          short_name: "步道乐跑题库",
+          name: '步道乐跑题库',
           id: "/",
-          description: "基于Vue+ Vite+ NaiveUI+ VueRouter构建的PWA应用",
+          description: "仅供学习使用",
           start_url: "./index.html",
           lang: "zh-CN",
           // 主题信息
@@ -59,66 +59,6 @@ export default ({ mode }: { mode: string }): UserConfig => {
             "window-controls-overlay",
             "fullscreen",
             "minimal-ui"
-          ],
-          // 快捷方式
-          shortcuts: [
-            {
-              name: "主页",
-              description: "主页",
-              url: prefixShortcuts + "",
-              icons: [
-                {
-                  src: Url(prefixUrl, "android/android-launchericon-96-96.png"),
-                  sizes: "96x96"
-                }
-              ]
-            },
-            {
-              name: "测试集",
-              description: "正在测试的一些玩意",
-              url: prefixShortcuts + "test/1",
-              icons: [
-                {
-                  src: Url(prefixUrl, "android/android-launchericon-96-96.png"),
-                  sizes: "96x96"
-                }
-              ]
-            },
-            {
-              name: "工具集",
-              description: "Test",
-              url: prefixShortcuts + "tool/1",
-              icons: [
-                {
-                  src: Url(prefixUrl, "android/android-launchericon-96-96.png"),
-                  sizes: "96x96"
-                }
-              ]
-            },
-          ],
-          // 屏幕截图
-          screenshots: [
-            //label,platform,type
-            {
-              src: Url(prefixUrl, "screenshots/screenshot-wide.jpeg"),
-              sizes: "1442x1151",
-              form_factor: "wide",
-            }, {
-              src: Url(prefixUrl, "screenshots/screenshot-narrow.jpeg"),
-              sizes: "555x1103",
-              form_factor: "narrow",
-            }
-          ],
-          // URI
-          protocol_handlers: [
-            {
-              protocol: "web+test",
-              url: prefixUrl + "/test/%s"
-            },
-            {
-              protocol: "web+tool",
-              url: prefixUrl + "/tool/%s"
-            }
           ]
         },
         devOptions: {

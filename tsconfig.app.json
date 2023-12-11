@@ -3,6 +3,7 @@
   "include": [
     "env.d.ts",
     "src/**/*",
+    "src/views/query/db/*",
     "src/**/*.vue",
     "scipts/build.cjs"
   ],
