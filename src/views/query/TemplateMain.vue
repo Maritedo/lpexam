@@ -8,7 +8,10 @@
                         查找:
                     </template>
                 </n-input>
-                <n-switch v-model:value="highPerf"></n-switch>
+                <n-switch v-model:value="highPerf">
+                    <template #checked>即时</template>
+                    <template #unchecked>延后</template>
+                </n-switch>
                 {{ highPerf ? "请输入以空格分隔的关键词，更改将立即触发搜索" : "请输入以空格分隔的关键词，按下回车以进行搜索" }}
             </n-space>
         </n-layout-header>
@@ -17,7 +20,6 @@
                 <n-list style="margin-bottom: 16px;" hoverable clickable>
                     <template #header>
                         <div class="header">
-
                             {{ variant.disp }}
                         </div>
                     </template>
@@ -73,7 +75,8 @@ const variants = [
         name: 'multiple_choice'
     }
 ];
-const final = Object.assign({}, basic);
+// const final = Object.assign({}, basic);
+const final = JSON.parse(basic)
 for (let i of variants)
     final[i.name].push(...props.quizs[i.name])
 const { highPerf } = storeToRefs(useConfigStore())

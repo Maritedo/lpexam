@@ -41,7 +41,7 @@
                 <n-icon size="28px"><menu-icon /></n-icon>
               </n-button>
               <n-layout :native-scrollbar="false">
-                <n-menu ref="portalRef" class="i-menu" :options="portalOptions || []" :value="currentPortal" />
+                <n-menu ref="portalRef" :default-expand-all="true" class="i-menu" :options="portalOptions || []" :value="currentPortal" />
               </n-layout>
               <div class="i-actions">
                 <n-menu ref="actionRef" class="i-action-menu" :options="actionOptions || []" :value="currentAction">
