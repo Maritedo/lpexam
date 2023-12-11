@@ -1,0 +1,141 @@
+
+      {
+        path: '513',
+        name: '513',
+        component: () => import('@/views/query/513.vue'),
+        meta: {
+          title: '射箭23-12-11'
+      },
+      {
+        path: '505',
+        name: '505',
+        component: () => import('@/views/query/505.vue'),
+        meta: {
+          title: '飞盘2023-11-13'
+      },
+      {
+        path: '482',
+        name: '482',
+        component: () => import('@/views/query/482.vue'),
+        meta: {
+          title: '足球-2023.5'
+      },
+      {
+        path: '481',
+        name: '481',
+        component: () => import('@/views/query/481.vue'),
+        meta: {
+          title: '羽毛球20230510'
+      },
+      {
+        path: '480',
+        name: '480',
+        component: () => import('@/views/query/480.vue'),
+        meta: {
+          title: '瑜伽2023.5'
+      },
+      {
+        path: '479',
+        name: '479',
+        component: () => import('@/views/query/479.vue'),
+        meta: {
+          title: '游泳-2023.5'
+      },
+      {
+        path: '478',
+        name: '478',
+        component: () => import('@/views/query/478.vue'),
+        meta: {
+          title: '形体艺术2023.5'
+      },
+      {
+        path: '477',
+        name: '477',
+        component: () => import('@/views/query/477.vue'),
+        meta: {
+          title: '武术2023.5'
+      },
+      {
+        path: '476',
+        name: '476',
+        component: () => import('@/views/query/476.vue'),
+        meta: {
+          title: '网球20230510'
+      },
+      {
+        path: '475',
+        name: '475',
+        component: () => import('@/views/query/475.vue'),
+        meta: {
+          title: '体育舞蹈2023.5'
+      },
+      {
+        path: '474',
+        name: '474',
+        component: () => import('@/views/query/474.vue'),
+        meta: {
+          title: '跆拳道题库2023.5'
+      },
+      {
+        path: '473',
+        name: '473',
+        component: () => import('@/views/query/473.vue'),
+        meta: {
+          title: '散打2023,5'
+      },
+      {
+        path: '472',
+        name: '472',
+        component: () => import('@/views/query/472.vue'),
+        meta: {
+          title: '柔力球20230518'
+      },
+      {
+        path: '471',
+        name: '471',
+        component: () => import('@/views/query/471.vue'),
+        meta: {
+          title: '气排球23-05-19'
+      },
+      {
+        path: '470',
+        name: '470',
+        component: () => import('@/views/query/470.vue'),
+        meta: {
+          title: '普拉提2023.5'
+      },
+      {
+        path: '469',
+        name: '469',
+        component: () => import('@/views/query/469.vue'),
+        meta: {
+          title: '乒乓球20230510'
+      },
+      {
+        path: '468',
+        name: '468',
+        component: () => import('@/views/query/468.vue'),
+        meta: {
+          title: '排球23 05-19'
+      },
+      {
+        path: '467',
+        name: '467',
+        component: () => import('@/views/query/467.vue'),
+        meta: {
+          title: '篮球题库2023.5'
+      },
+      {
+        path: '466',
+        name: '466',
+        component: () => import('@/views/query/466.vue'),
+        meta: {
+          title: '拉丁舞20230510'
+      },
+      {
+        path: '465',
+        name: '465',
+        component: () => import('@/views/query/465.vue'),
+        meta: {
+          title: '健美操2023.5'
+      },
