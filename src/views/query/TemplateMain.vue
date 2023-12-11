@@ -76,9 +76,9 @@ const variants = [
     }
 ];
 // const final = Object.assign({}, basic);
-const final = JSON.parse(basic)
+const final = JSON.parse(basic);
 for (let i of variants)
-    final[i.name].push(...props.quizs[i.name])
+    final[i.name].unshift(...props.quizs[i.name])
 const { highPerf } = storeToRefs(useConfigStore())
 let elements = [];
 
