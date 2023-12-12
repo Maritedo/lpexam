@@ -47,7 +47,7 @@
     margin: 12px;
     font-size: 18px;
     width: 100%;
-    text-wrap: balance;
+    padding: 24px;
 }
 
 .meta {

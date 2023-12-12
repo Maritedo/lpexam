@@ -1,67 +1,70 @@
 <template>
   <n-config-provider fullH :theme="appConfig.currentTheme.value">
-    <n-layout class="n-container" content-style="display: flex; flex-direction: column;" fullH>
-      <n-layout-header class="n-header" bordered @click.prevent>
-        <n-page-header class="n-header-bar">
-          <template #title>
-            <div class="n-header-bar-wrapper">
-              <div class="n-action" nonedrag>
-                <n-button @click="appRouter.go(-1)" text>
-                  <n-icon size="large"><arrow-back /></n-icon>
-                </n-button>
-                <n-button @click="appRouter.go(1)" text>
-                  <n-icon size="large"><arrow-forward /></n-icon>
-                </n-button>
+    <n-dialog-provider ref="appDialog">
+      <n-layout class="n-container" content-style="display: flex; flex-direction: column;" fullH>
+        <n-layout-header class="n-header" bordered @click.prevent>
+          <n-page-header class="n-header-bar">
+            <template #title>
+              <div class="n-header-bar-wrapper">
+                <div class="n-action" nonedrag>
+                  <n-button @click="appRouter.go(-1)" text>
+                    <n-icon size="large"><arrow-back /></n-icon>
+                  </n-button>
+                  <n-button @click="appRouter.go(1)" text>
+                    <n-icon size="large"><arrow-forward /></n-icon>
+                  </n-button>
+                </div>
+                <n-breadcrumb class="breadcrumb">
+                  <n-breadcrumb-item :clickable="false"> 乐跑 </n-breadcrumb-item>
+                  <transition name="breadcrumb" v-for="(name, index) in getDisplayNames(section)" :key="index">
+                    <n-breadcrumb-item nonedrag :key="name.original" @click.prevent="onBreadcurmbClick">
+                      <router-link :to="{ name: name.original }">
+                        {{ name.display }}
+                      </router-link>
+                    </n-breadcrumb-item>
+                  </transition>
+                </n-breadcrumb>
               </div>
-              <n-breadcrumb class="breadcrumb">
-                <n-breadcrumb-item :clickable="false"> 乐跑 </n-breadcrumb-item>
-                <transition name="breadcrumb" v-for="(name, index) in getDisplayNames(section)" :key="index">
-                  <n-breadcrumb-item nonedrag :key="name.original" @click.prevent="onBreadcurmbClick">
-                    <router-link :to="{ name: name.original }">
-                      {{ name.display }}
-                    </router-link>
-                  </n-breadcrumb-item>
+            </template>
+            <template #back></template>
+          </n-page-header>
+        </n-layout-header>
+        <n-layout class="n-main" has-sider>
+          <n-notification-provider container-style="margin-top: var(--title-height);" ref="appNotify">
+            <n-layout-sider :native-scrollbar="false" content-style="height: 100%" class="n-sider" collapse-mode="width"
+              :collapsed="collapsed" bordered>
+              <div class="i-wrapper">
+                <n-button @click="collapsed = !collapsed" :style="{
+                  backgroundColor: appConfig.themeVars.value.bodyColor,
+                  padding: ['6px', 'auto', '6px', '10px'],
+                  display: 'block'
+                }" text>
+                  <n-icon size="28px"><menu-icon /></n-icon>
+                </n-button>
+                <n-layout :native-scrollbar="false">
+                  <n-menu ref="portalRef" :default-expand-all="true" class="i-menu" :options="portalOptions || []"
+                    :value="currentPortal" />
+                </n-layout>
+                <div class="i-actions">
+                  <n-menu ref="actionRef" class="i-action-menu" :options="actionOptions || []" :value="currentAction">
+                  </n-menu>
+                </div>
+              </div>
+            </n-layout-sider>
+            <n-layout-content class="n-content" content-style="height: 100%;" :native-scrollbar="false">
+              <router-view v-slot="{ Component, route }">
+                <transition name="fade">
+                  <keep-alive v-if="appConfig.keepAlive.value">
+                    <component class="i-content" :is="Component" :key="route.path" />
+                  </keep-alive>
+                  <component v-else class="i-content" :is="Component" :key="route.path" />
                 </transition>
-              </n-breadcrumb>
-            </div>
-          </template>
-          <template #back></template>
-        </n-page-header>
-      </n-layout-header>
-      <n-layout class="n-main" has-sider>
-        <n-notification-provider container-style="margin-top: var(--title-height);" ref="appNotify">
-          <n-layout-sider :native-scrollbar="false" content-style="height: 100%" class="n-sider" collapse-mode="width"
-            :collapsed="collapsed" bordered>
-            <div class="i-wrapper">
-              <n-button @click="collapsed = !collapsed" :style="{
-                backgroundColor: appConfig.themeVars.value.bodyColor,
-                padding: ['6px', 'auto', '6px', '10px'],
-                display: 'block'
-              }" text>
-                <n-icon size="28px"><menu-icon /></n-icon>
-              </n-button>
-              <n-layout :native-scrollbar="false">
-                <n-menu ref="portalRef" :default-expand-all="true" class="i-menu" :options="portalOptions || []" :value="currentPortal" />
-              </n-layout>
-              <div class="i-actions">
-                <n-menu ref="actionRef" class="i-action-menu" :options="actionOptions || []" :value="currentAction">
-                </n-menu>
-              </div>
-            </div>
-          </n-layout-sider>
-          <n-layout-content class="n-content" content-style="height: 100%;" :native-scrollbar="false">
-            <router-view v-slot="{ Component, route }">
-              <transition name="fade">
-                <keep-alive v-if="appConfig.keepAlive.value">
-                  <component class="i-content" :is="Component" :key="route.path" />
-                </keep-alive>
-                <component v-else class="i-content" :is="Component" :key="route.path" />
-              </transition>
-            </router-view>
-          </n-layout-content>
-        </n-notification-provider>
+              </router-view>
+            </n-layout-content>
+          </n-notification-provider>
+        </n-layout>
       </n-layout>
-    </n-layout>
+    </n-dialog-provider>
   </n-config-provider>
 </template>
 
@@ -76,18 +79,21 @@ import { useConfigStore as useConfigs } from '@/stores/configs'
 import { configureThemeColor, simulateClick, genMenuOptions as genMenu, type ExtendedRecord, type DiversedOption, getOverrided } from '@/scripts/normal'
 import type { NotificationApiInjection } from 'naive-ui/es/notification/src/NotificationProvider'
 import { ArrowBack, ArrowForward, Menu as MenuIcon } from '@vicons/ionicons5'
-const portalRef: Ref<null | typeof NMenu> = ref(null)
-const actionRef: Ref<null | typeof NMenu> = ref(null)
-const currentPortal: Ref<any> = ref()
-const currentAction: Ref<any> = ref()
-const section: Ref<string[]> = ref([])
+import type { DialogApiInjection } from 'naive-ui/es/dialog/src/DialogProvider'
+const portalRef: Ref<null | typeof NMenu> = ref(null);
+const actionRef: Ref<null | typeof NMenu> = ref(null);
+const currentPortal: Ref<any> = ref();
+const currentAction: Ref<any> = ref();
+const section: Ref<string[]> = ref([]);
 
-const { collapsed } = storeToRefs(useConfigs())
+const { collapsed } = storeToRefs(useConfigs());
 
-const appConfig = storeToRefs(useConfigs())
-const appRouter = useRouter()
-const appNotify = ref()
-var useNotify: NotificationApiInjection
+const appConfig = storeToRefs(useConfigs());
+const appRouter = useRouter();
+const appNotify = ref();
+const appDialog = ref();
+var useNotify: NotificationApiInjection;
+var useDialog: DialogApiInjection;
 
 const divider: MenuDividerOption = {
   type: 'divider'
@@ -200,10 +206,18 @@ const onBreadcurmbClick = (e: PointerEvent) => {
 // })
 
 onMounted(() => {
-  useNotify = appNotify.value
+  useNotify = appNotify.value;
+  useDialog = appDialog.value;
   const colorSchemeSetter = (isLight: boolean) => {
     appConfig.osTheme.value = isLight ? 'light' : 'dark'
-  }
+  };
+  useDialog.info({
+    content: "点击左侧菜单最上方按钮可以收起/展开菜单！",
+    closable: false,
+    maskClosable: false,
+    onMaskClick: () => null,
+    positiveText: "我已知晓"
+  })
   const mediaQueryList = window.matchMedia('(prefers-color-scheme: light)')
   colorSchemeSetter(mediaQueryList.matches)
   mediaQueryList.addEventListener('change', (e) => colorSchemeSetter(e.matches))
