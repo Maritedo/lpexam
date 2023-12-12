@@ -68,11 +68,11 @@ const variants = [
     },
     {
         disp: '多选题',
-        name: 'checking'
+        name: 'multiple_choice'
     },
     {
         disp: '判断题',
-        name: 'multiple_choice'
+        name: 'checking'
     }
 ];
 // const final = Object.assign({}, basic);
