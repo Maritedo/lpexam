@@ -19,6 +19,7 @@ ls = [
     {"id": 467, "bank_name": "篮球题库2023.5"},
     {"id": 466, "bank_name": "拉丁舞20230510"},
     {"id": 465, "bank_name": "健美操2023.5"},
+    {"id": 24645, "bank_name": "基础知识30%（大二2023.5）"}
 ]
 
 with open(f"new.txt", "w", encoding="utf-8") as fw:

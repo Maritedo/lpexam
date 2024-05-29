@@ -122,6 +122,10 @@ const tiku = [
   {
     "id": 465,
     "bank_name": "健美操2023.5"
+  },
+  {
+    "id": 464,
+    "bank_name": "基础知识30%（大二2023.5）"
   }
 ]
 export const portal: ExtendedRecord[] = [
@@ -301,6 +305,14 @@ export const portal: ExtendedRecord[] = [
         component: () => import('@/views/query/465.vue'),
         meta: {
           title: '健美操2023.5'
+        }
+      },
+      {
+        path: '464',
+        name: '464',
+        component: () => import('@/views/query/464.vue'),
+        meta: {
+          title: '基础知识30%（大二2023.5）'
         }
       }
     ]
